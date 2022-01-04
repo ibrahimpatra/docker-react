@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ibupatra/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ibupatra/docker-react npm run test
